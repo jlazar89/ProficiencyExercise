@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dataItem"
+            type="com.arinspect.proficiencyexercise.data.datasources.api.AboutCanadaResponse.AboutCanadaEntity" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.MaterialComponents.CardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text='@{dataItem.title ?? ""}'
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintRight_toLeftOf="@+id/ivImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="tite"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text='@{dataItem.description ?? ""}'
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@+id/ivImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                tools:text="Descripsaldkjasldkjas;dolajshdlaksoidas;ildhjaspdijhasdpijha;dpiasjasikjdaspidjaspdasdaslkidalskdasdasdhgaskdhalskidgaslikdgaslidkgaslidughasl.idg"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:imageUrl='@{dataItem.imageHref ?? ""}'
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvDescription"
+                app:layout_constraintTop_toTopOf="parent"
+                app:placeholder="@{@android:drawable/ic_delete}" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

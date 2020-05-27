@@ -1,0 +1,8 @@
+gradle.properties
+
+ext {
+    APP_NAME = "Proficiency App"
+    APPLICATION_ID = "com.arinspect.proficiencyexercise"
+
+   BASE_URL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/"
+}
