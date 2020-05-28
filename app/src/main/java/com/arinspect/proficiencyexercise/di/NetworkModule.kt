@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import java.util.concurrent.TimeUnit
@@ -72,12 +73,12 @@ fun provideHttpClient(context: Context, cache: Cache): OkHttpClient {
 
             return@addInterceptor chain.proceed(requestBuilder.build())
         }
-        /*.addInterceptor(HttpLoggingInterceptor().also {
+        .addInterceptor(HttpLoggingInterceptor().also {
             it.level = HttpLoggingInterceptor.Level.BODY
-        })*/// For Logging
+        })
         .connectTimeout(30, TimeUnit.SECONDS)
         .writeTimeout(30, TimeUnit.SECONDS)
         .readTimeout(30, TimeUnit.SECONDS)
-        .hostnameVerifier { _, _ -> true }
+        //.hostnameVerifier { _, _ -> true }
         .build()
 }

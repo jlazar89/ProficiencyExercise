@@ -10,7 +10,8 @@ import timber.log.Timber
 /**
  * Purpose: Application class which is used for the timber logging, koin starting for dependencies etc.
  */
-class ProficiencyApp : Application() {
+open class ProficiencyApp : Application() {
+    val appComponent = listOf(networkModule, retrofitModule, appModule)
 
     override fun onCreate() {
         super.onCreate()
@@ -21,7 +22,7 @@ class ProficiencyApp : Application() {
 
         startKoin {
             androidContext(this@ProficiencyApp)
-            modules(listOf(networkModule, retrofitModule, appModule))
+            modules(provideDependency())
         }
     }
 
@@ -29,4 +30,6 @@ class ProficiencyApp : Application() {
     companion object {
         lateinit var instance: ProficiencyApp
     }
+
+    open fun provideDependency() = appComponent
 }
